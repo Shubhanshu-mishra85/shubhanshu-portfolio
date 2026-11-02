@@ -1,978 +1,1148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090a0c">
-
-  <title>Shubhanshu Mishra | Software Developer Portfolio</title>
-  <meta name="description" content="Shubhanshu Mishra — BCA student, aspiring software developer, and technology enthusiast. Explore my skills, education, certifications and projects.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #090a0c;
-      --surface: #111318;
-      --surface2: #171a20;
-      --text: #f5f5f5;
-      --muted: #a2a6ad;
-      --accent: #b5f23d;
-      --border: rgba(255,255,255,.11);
-      --heading: "Space Grotesk", sans-serif;
-      --body: "DM Sans", sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--body);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .container {
-      width: min(1160px, 90%);
-      margin: auto;
-    }
-
-    .accent { color: var(--accent); }
-
-    .section {
-      padding: 105px 0;
-      scroll-margin-top: 80px;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 11px;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    .section-title {
-      font-family: var(--heading);
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin-bottom: 18px;
-    }
-
-    .section-desc {
-      color: var(--muted);
-      max-width: 650px;
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(9,10,12,.82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      min-height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .logo {
-      font-family: var(--heading);
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -1px;
-      white-space: nowrap;
-    }
-
-    .logo span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #d5d5d5;
-      font-size: 13px;
-      transition: .25s;
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    .nav-cta {
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 10px 17px;
-      border-radius: 30px;
-      font-size: 12px;
-      transition: .25s;
-      white-space: nowrap;
-    }
-
-    .nav-cta:hover {
-      background: var(--accent);
-      color: #111;
-    }
-
-    .menu-btn {
-      display: none;
-      background: none;
-      border: 0;
-      color: white;
-      font-size: 27px;
-      cursor: pointer;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 88svh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 125px 0 75px;
-      background:
-        radial-gradient(ellipse at 80% 30%, rgba(181,242,61,.12), transparent 35%),
-        radial-gradient(ellipse at 15% 75%, rgba(80,90,130,.12), transparent 40%),
-        var(--bg);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -100px;
-      top: 15%;
-      border-radius: 50%;
-      background: rgba(181,242,61,.09);
-      filter: blur(100px);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 850px;
-    }
-
-    .hero-tag {
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-family: var(--heading);
-      font-size: clamp(48px, 8.5vw, 100px);
-      line-height: .99;
-      letter-spacing: -5px;
-      font-weight: 600;
-      margin-bottom: 28px;
-    }
-
-    .hero-description {
-      color: #c2c4c9;
-      max-width: 610px;
-      font-size: clamp(15px, 2vw, 18px);
-      line-height: 1.85;
-      min-height: 58px;
-    }
-
-    .cursor {
-      color: var(--accent);
-      animation: blink .8s infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 21px;
-      border-radius: 40px;
-      font-size: 13px;
-      font-weight: 700;
-      transition: .25s;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #10120b;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(181,242,61,.2);
-    }
-
-    .btn-outline {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: white;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .hero-bottom {
-      position: absolute;
-      bottom: 25px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      color: #858991;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 55px;
-      align-items: start;
-      margin-top: 35px;
-    }
-
-    .about-text p {
-      color: #b9bdc4;
-      font-size: 15px;
-      line-height: 1.9;
-      margin-bottom: 18px;
-    }
-
-    .about-card {
-      background: linear-gradient(145deg, #191d24, #101216);
-      border: 1px solid var(--border);
-      padding: 28px;
-      border-radius: 18px;
-    }
-
-    .about-card h3 {
-      font-family: var(--heading);
-      font-size: 21px;
-      margin-bottom: 20px;
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 13px;
-    }
-
-    .info-row:last-child { border: 0; }
-    .info-row span:first-child { color: var(--muted); }
-    .info-row span:last-child { text-align: right; }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin-top: 38px;
-    }
-
-    .skill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 22px 18px;
-      transition: .3s;
-    }
-
-    .skill:hover {
-      border-color: var(--accent);
-      transform: translateY(-5px);
-    }
-
-    .skill-icon {
-      font-size: 25px;
-      margin-bottom: 15px;
-    }
-
-    .skill h3 {
-      font-family: var(--heading);
-      font-size: 15px;
-      margin-bottom: 7px;
-    }
-
-    .skill p {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    /* EDUCATION */
-    .timeline {
-      margin-top: 40px;
-      border-left: 1px solid rgba(181,242,61,.5);
-      padding-left: 28px;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 35px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 25px;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -35px;
-      top: 27px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 15px rgba(181,242,61,.5);
-    }
-
-    .timeline-item h3 {
-      font-family: var(--heading);
-      font-size: 19px;
-      margin-bottom: 7px;
-    }
-
-    .timeline-item .date {
-      color: var(--accent);
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .timeline-item p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    /* CERTIFICATES */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 38px;
-    }
-
-    .cert {
-      padding: 23px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      border-radius: 14px;
-      transition: .3s;
-    }
-
-    .cert:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-    }
-
-    .cert .cert-icon {
-      font-size: 25px;
-      margin-bottom: 15px;
-    }
-
-    .cert h3 {
-      font-family: var(--heading);
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 9px;
-    }
-
-    .cert p {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    /* PROJECTS */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 38px;
-    }
-
-    .project {
-      background: linear-gradient(145deg, #191d24, #101216);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: .3s;
-    }
-
-    .project:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-    }
-
-    .project-number {
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    }
-
-    .project h3 {
-      font-family: var(--heading);
-      font-size: 23px;
-      margin-bottom: 12px;
-    }
-
-    .project p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .project-link {
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    /* CONTACT */
-    .contact-box {
-      margin-top: 35px;
-      padding: clamp(25px, 5vw, 55px);
-      border-radius: 20px;
-      border: 1px solid rgba(181,242,61,.3);
-      background:
-        radial-gradient(circle at 90% 20%, rgba(181,242,61,.12), transparent 35%),
-        var(--surface);
-    }
-
-    .contact-box h3 {
-      font-family: var(--heading);
-      font-size: clamp(28px, 5vw, 48px);
-      letter-spacing: -2px;
-      margin-bottom: 15px;
-    }
-
-    .contact-box > p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 25px;
-      max-width: 600px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    /* ANIMATIONS */
-    .reveal {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* TABLET */
-    @media (max-width: 900px) {
-      .nav-links { gap: 15px; }
-      .nav-links a { font-size: 12px; }
-      .skills-grid { grid-template-columns: repeat(3, 1fr); }
-      .cert-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* MOBILE */
-    @media (max-width: 680px) {
-      .container { width: 89%; }
-
-      .nav-inner { min-height: 65px; }
-
-      .menu-btn { display: block; }
-
-      .nav-cta { display: none; }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        padding: 25px 6%;
-        background: rgba(9,10,12,.98);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 22px;
-      }
-
-      .nav-links.open { display: flex; }
-
-      .nav-links a { font-size: 17px; }
-
-      .hero {
-        min-height: 82svh;
-        padding: 115px 0 85px;
-      }
-
-      .hero h1 {
-        font-size: clamp(46px, 12vw, 68px);
-        letter-spacing: -3px;
-      }
-
-      .hero-description { font-size: 15px; }
-
-      .hero-bottom { font-size: 8px; }
-
-      .section { padding: 72px 0; }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .cert-grid { grid-template-columns: 1fr; }
-
-      .project-grid { grid-template-columns: 1fr; }
-
-      .timeline { padding-left: 22px; }
-
-      .timeline-item::before { left: -29px; }
-
-      .timeline-item { padding: 20px; }
-
-      .footer-inner { flex-direction: column; }
-    }
-
-    @media (max-width: 360px) {
-      .skills-grid { grid-template-columns: 1fr; }
-      .hero-actions .btn { width: 100%; }
-      .hero h1 { font-size: 43px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090a0c">
+<meta name="description" content="Shubhanshu Mishra — BCA student and aspiring software developer from Lucknow, India.">
+<title>Shubhanshu Mishra | Developer Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#090a0c;
+  --surface:#111318;
+  --text:#f5f5f5;
+  --muted:#a2a6ad;
+  --accent:#b5f23d;
+  --border:rgba(255,255,255,.11);
+  --heading:"Space Grotesk",sans-serif;
+  --body:"DM Sans",sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{max-width:100%;display:block}
+
+.container{width:min(1160px,90%);margin-inline:auto}
+.accent{color:var(--accent)}
+.section{padding:100px 0;scroll-margin-top:75px}
+
+.eyebrow{
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+
+.section-title{
+  font-family:var(--heading);
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.1;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+}
+
+.section-desc{
+  color:var(--muted);
+  max-width:650px;
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:100;
+  background:rgba(9,10,12,.86);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  min-height:72px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:22px;
+}
+
+.logo{
+  font-family:var(--heading);
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:-1px;
+  white-space:nowrap;
+}
+
+.logo span{color:var(--accent)}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:23px;
+  list-style:none;
+}
+
+.nav-links a{
+  color:#d5d5d5;
+  font-size:13px;
+  transition:.25s;
+}
+
+.nav-links a:hover{color:var(--accent)}
+
+.nav-cta{
+  border:1px solid var(--accent);
+  color:var(--accent);
+  padding:10px 17px;
+  border-radius:30px;
+  font-size:12px;
+  white-space:nowrap;
+  transition:.25s;
+}
+
+.nav-cta:hover{
+  background:var(--accent);
+  color:#111;
+}
+
+.menu-btn{
+  display:none;
+  background:none;
+  border:0;
+  color:white;
+  font-size:27px;
+  cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+  min-height:88svh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding:125px 0 85px;
+  background:
+    radial-gradient(ellipse at 80% 30%,rgba(181,242,61,.13),transparent 35%),
+    radial-gradient(ellipse at 15% 75%,rgba(80,90,130,.12),transparent 40%),
+    var(--bg);
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  right:-100px;
+  top:15%;
+  border-radius:50%;
+  background:rgba(181,242,61,.09);
+  filter:blur(100px);
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+}
+
+.hero-tag{
+  color:var(--accent);
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:25px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-family:var(--heading);
+  font-size:clamp(48px,8.5vw,100px);
+  line-height:.99;
+  letter-spacing:-5px;
+  font-weight:600;
+  margin-bottom:28px;
+}
+
+.hero-description{
+  color:#c2c4c9;
+  max-width:610px;
+  font-size:clamp(15px,2vw,18px);
+  line-height:1.85;
+  min-height:58px;
+}
+
+.cursor{
+  color:var(--accent);
+  animation:blink .8s infinite;
+}
+
+@keyframes blink{50%{opacity:0}}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:13px 21px;
+  border-radius:40px;
+  font-size:13px;
+  font-weight:700;
+  transition:.25s;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:#10120b;
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 30px rgba(181,242,61,.2);
+}
+
+.btn-outline{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:white;
+}
+
+.btn-outline:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  transform:translateY(-3px);
+}
+
+.hero-bottom{
+  position:absolute;
+  bottom:25px;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  color:#858991;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:55px;
+  align-items:start;
+  margin-top:35px;
+}
+
+.about-text p{
+  color:#b9bdc4;
+  font-size:15px;
+  line-height:1.9;
+  margin-bottom:18px;
+}
+
+/* PREMIUM PROFILE ID CARD */
+
+.profile-card{
+  position:relative;
+  padding:32px;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(181,242,61,.13),transparent 45%),
+    linear-gradient(145deg,#171b1a,#0d0f13);
+  border:1px solid rgba(181,242,61,.25);
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.profile-card:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.035),transparent 70%);
+  pointer-events:none;
+}
+
+.id-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--muted);
+}
+
+.id-card-status{
+  color:var(--accent);
+  font-size:9px;
+  letter-spacing:1px;
+}
+
+/* COIN STYLE PHOTO */
+
+.avatar{
+  width:116px;
+  height:116px;
+  margin:32px auto 22px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-family:var(--heading);
+  font-size:37px;
+  font-weight:700;
+  color:#10120b;
+  background:linear-gradient(145deg,#c6ff59,#83c927);
+  border:5px solid #20291c;
+  outline:2px solid var(--accent);
+  box-shadow:
+    0 0 0 8px rgba(181,242,61,.07),
+    0 0 35px rgba(181,242,61,.18);
+  overflow:hidden;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.id-card-heading{text-align:center}
+
+.id-card-heading h3{
+  font-family:var(--heading);
+  font-size:26px;
+  margin-bottom:7px;
+}
+
+.id-card-heading p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.id-card-divider{
+  height:1px;
+  background:var(--border);
+  margin:28px 0;
+}
+
+.info-list{display:grid;gap:0}
+
+.info-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:13px;
+}
+
+.info-item span:first-child{
+  color:var(--muted);
+  flex-shrink:0;
+}
+
+.info-item span:last-child{
+  text-align:right;
+  font-weight:600;
+  overflow-wrap:anywhere;
+}
+
+.id-card-footer{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+  color:var(--accent);
+  font-size:9px;
+  letter-spacing:1.5px;
+}
+
+/* SKILLS */
+
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:38px;
+}
+
+.skill{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:22px 18px;
+  transition:.3s;
+}
+
+.skill:hover,.cert:hover,.project:hover{
+  border-color:var(--accent);
+  transform:translateY(-5px);
+}
+
+.skill-icon{
+  font-size:25px;
+  margin-bottom:15px;
+}
+
+.skill h3{
+  font-family:var(--heading);
+  font-size:15px;
+  margin-bottom:7px;
+}
+
+.skill p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+/* EDUCATION */
+
+.timeline{
+  margin-top:40px;
+  border-left:1px solid rgba(181,242,61,.5);
+  padding-left:28px;
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:25px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:25px;
+}
+
+.timeline-item:before{
+  content:"";
+  position:absolute;
+  left:-35px;
+  top:27px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 15px rgba(181,242,61,.5);
+}
+
+.timeline-item h3{
+  font-family:var(--heading);
+  font-size:19px;
+  margin-bottom:7px;
+}
+
+.timeline-item .date{
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.timeline-item p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* CERTIFICATES */
+
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:38px;
+}
+
+.cert{
+  padding:23px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:14px;
+  transition:.3s;
+}
+
+.cert-icon{
+  font-size:25px;
+  margin-bottom:15px;
+}
+
+.cert h3{
+  font-family:var(--heading);
+  font-size:15px;
+  line-height:1.5;
+  margin-bottom:9px;
+}
+
+.cert p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+/* PROJECTS */
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:38px;
+}
+
+.project{
+  background:linear-gradient(145deg,#191d24,#101216);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+  transition:.3s;
+}
+
+.project-number{
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+.project h3{
+  font-family:var(--heading);
+  font-size:23px;
+  margin-bottom:12px;
+}
+
+.project p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.project-link{
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+}
+
+/* CONTACT */
+
+.contact-box{
+  margin-top:35px;
+  padding:clamp(25px,5vw,55px);
+  border-radius:20px;
+  border:1px solid rgba(181,242,61,.3);
+  background:
+    radial-gradient(circle at 90% 20%,rgba(181,242,61,.12),transparent 35%),
+    var(--surface);
+}
+
+.contact-box h3{
+  font-family:var(--heading);
+  font-size:clamp(28px,5vw,48px);
+  letter-spacing:-2px;
+  margin-bottom:15px;
+}
+
+.contact-box>p{
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:25px;
+  max-width:600px;
+}
+
+.contact-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--border);
+  padding:28px 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+/* ANIMATIONS */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+  .nav-links{gap:13px}
+  .nav-links a{font-size:12px}
+  .skills-grid{grid-template-columns:repeat(3,1fr)}
+  .cert-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* MOBILE */
+
+@media(max-width:680px){
+  .container{width:89%}
+  .nav-inner{min-height:65px}
+  .menu-btn{display:block}
+  .nav-cta{display:none}
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:65px;
+    left:0;
+    width:100%;
+    padding:25px 6%;
+    background:rgba(9,10,12,.98);
+    border-bottom:1px solid var(--border);
+    flex-direction:column;
+    align-items:flex-start;
+    gap:22px;
+  }
+
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:17px}
+
+  .hero{
+    min-height:82svh;
+    padding:115px 0 85px;
+  }
+
+  .hero h1{
+    font-size:clamp(46px,12vw,68px);
+    letter-spacing:-3px;
+  }
+
+  .hero-description{font-size:15px}
+  .hero-bottom{font-size:8px;letter-spacing:1px}
+
+  .section{padding:72px 0}
+
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .skills-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .cert-grid,.project-grid{grid-template-columns:1fr}
+
+  .timeline{padding-left:22px}
+  .timeline-item:before{left:-29px}
+  .timeline-item{padding:20px}
+
+  .profile-card{padding:25px 22px}
+  .avatar{width:106px;height:106px}
+  .id-card-heading h3{font-size:23px}
+  .info-item{font-size:12px}
+
+  .footer-inner{flex-direction:column}
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:380px){
+  .skills-grid{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .hero h1{font-size:43px}
+  .id-card-top{font-size:8px;letter-spacing:1px}
+  .id-card-footer{font-size:8px;letter-spacing:1px}
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a href="#home" class="logo">SHUBHANSHU<span>.</span></a>
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">SHUBHANSHU<span>.</span></a>
 
-      <nav>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#certificates">Certificates</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-      <a href="#contact" class="nav-cta">Let's Connect ↗</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <a href="#contact" class="nav-cta">Let's Connect ↗</a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-tag">Portfolio / 2026 — India</p>
+
+      <h1>
+        Hello,<br>
+        I'm <span class="accent">Shubhanshu.</span>
+      </h1>
+
+      <p class="hero-description">
+        <span id="typedText"></span><span class="cursor">|</span>
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Explore My Work ↗</a>
+        <a href="#about" class="btn btn-outline">Discover My Journey</a>
+        <a href="#contact" class="btn btn-outline">Contact Me ↗</a>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <main>
+  <div class="container hero-bottom">
+    <span>Aspiring Software Developer</span>
+    <span>Lucknow, India ↓</span>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <p class="hero-tag">Portfolio / 2026 — India</p>
+<!-- ABOUT -->
 
-          <h1>
-            Hello,<br>
-            I'm <span class="accent">Shubhanshu.</span>
-          </h1>
+<section class="section" id="about">
+  <div class="container reveal">
+    <p class="eyebrow">01 / About Me</p>
 
-          <p class="hero-description">
-            <span id="typedText"></span><span class="cursor">|</span>
-          </p>
+    <h2 class="section-title">
+      A little about <span class="accent">myself.</span>
+    </h2>
 
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">Explore My Work ↗</a>
-            <a href="#about" class="btn btn-outline">Discover My Journey</a>
-            <a href="#contact" class="btn btn-outline">Contact Me ↗</a>
-          </div>
-        </div>
-      </div>
+    <div class="about-grid">
 
-      <div class="container hero-bottom">
-        <span>Aspiring Software Developer</span>
-        <span>Lucknow, India ↓</span>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="container reveal">
-        <p class="eyebrow">01 / About Me</p>
-        <h2 class="section-title">A little about <span class="accent">myself.</span></h2>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              I am a Bachelor of Computer Applications (BCA) student at
-              Maharishi University of Information Technology (MUIT), Lucknow.
-              I am interested in software development, programming and technology.
-            </p>
-
-            <p>
-              I am building my foundation in programming, database management,
-              web development and core computer science concepts through
-              academic studies and independent learning.
-            </p>
-
-            <p>
-              I enjoy understanding how software applications are designed,
-              developed and improved. My goal is to strengthen my technical
-              skills through practical projects, consistent learning and feedback.
-            </p>
-
-            <p>
-              I am seeking a Software Development Internship where I can learn
-              from an experienced team, contribute with my current abilities
-              and gain practical industry experience.
-            </p>
-
-            <p>
-              I believe in continuous learning, honest work and demonstrating
-              my abilities through real projects.
-            </p>
-          </div>
-
-          <div class="about-card">
-            <h3>Personal Snapshot</h3>
-            <div class="info-row"><span>Name</span><span>Shubhanshu Mishra</span></div>
-            <div class="info-row"><span>Education</span><span>BCA</span></div>
-            <div class="info-row"><span>University</span><span>MUIT</span></div>
-            <div class="info-row"><span>Location</span><span>Lucknow, India</span></div>
-            <div class="info-row"><span>Career Goal</span><span>Software Developer</span></div>
-            <div class="info-row"><span>Availability</span><span class="accent">Internship Opportunities</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="container reveal">
-        <p class="eyebrow">02 / Technical Skills</p>
-        <h2 class="section-title">Things I'm <span class="accent">learning.</span></h2>
-        <p class="section-desc">
-          My current learning areas and technical foundations. I keep improving
-          these skills through coursework, practice and projects.
+      <div class="about-text">
+        <p>
+          I am a Bachelor of Computer Applications (BCA) student at
+          Maharishi University of Information Technology (MUIT), Lucknow.
+          I am interested in software development, programming and technology.
         </p>
 
-        <div class="skills-grid">
-          <div class="skill"><div class="skill-icon">☕</div><h3>Java</h3><p>Programming fundamentals and OOP</p></div>
-          <div class="skill"><div class="skill-icon">C</div><h3>C Programming</h3><p>Core programming concepts</p></div>
-          <div class="skill"><div class="skill-icon">⌘</div><h3>HTML5</h3><p>Web page structure</p></div>
-          <div class="skill"><div class="skill-icon">✦</div><h3>CSS</h3><p>Styling and responsive layouts</p></div>
-          <div class="skill"><div class="skill-icon">▤</div><h3>DBMS</h3><p>Database concepts</p></div>
-          <div class="skill"><div class="skill-icon">◈</div><h3>MySQL</h3><p>Relational database basics</p></div>
-          <div class="skill"><div class="skill-icon">⌗</div><h3>SQL</h3><p>Queries and data management</p></div>
-          <div class="skill"><div class="skill-icon">⌘</div><h3>GitHub</h3><p>Repositories and project hosting</p></div>
-          <div class="skill"><div class="skill-icon">▦</div><h3>Microsoft Office</h3><p>Word, Excel and PowerPoint</p></div>
-          <div class="skill"><div class="skill-icon">▥</div><h3>Power BI</h3><p>Beginner-level data visualization</p></div>
-          <div class="skill"><div class="skill-icon">⌘</div><h3>DSA</h3><p>Data structures and algorithms</p></div>
-          <div class="skill"><div class="skill-icon">✧</div><h3>AI Fundamentals</h3><p>Foundational AI concepts</p></div>
-          <div class="skill"><div class="skill-icon">◇</div><h3>JSON</h3><p>Structured data fundamentals</p></div>
-          <div class="skill"><div class="skill-icon">▣</div><h3>Progressive Web Apps</h3><p>PWA fundamentals</p></div>
-          <div class="skill"><div class="skill-icon">◎</div><h3>Information Analysis</h3><p>Research and analysis basics</p></div>
-          <div class="skill"><div class="skill-icon">⌘</div><h3>Critical Infrastructure</h3><p>Introductory security concepts</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="section" id="education">
-      <div class="container reveal">
-        <p class="eyebrow">03 / Education</p>
-        <h2 class="section-title">My academic <span class="accent">journey.</span></h2>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <h3>Bachelor of Computer Applications (BCA)</h3>
-            <div class="date">January 2025 – January 2028</div>
-            <p><strong>Maharishi University of Information Technology</strong>, Lucknow</p>
-            <p>Currently pursuing BCA, studying programming, databases, computer science and software development.</p>
-          </div>
-
-          <div class="timeline-item">
-            <h3>Intermediate — Science</h3>
-            <div class="date">January 2023 – January 2024</div>
-            <p><strong>Dr. Ram Manohar Lohia Awadh University</strong>, Faizabad</p>
-            <p>Completed Intermediate education in the Science stream. Grade: A.</p>
-          </div>
-
-          <div class="timeline-item">
-            <h3>Advanced Diploma in Computer Applications (ADCA)</h3>
-            <div class="date">September 2022 – September 2023</div>
-            <p><strong>The Sky Computer Institute</strong></p>
-            <p>Grade: A. Computer applications and Microsoft Office fundamentals.</p>
-          </div>
-
-          <div class="timeline-item">
-            <h3>Course on Computer Concepts (CCC)</h3>
-            <div class="date">January 2023 – April 2023</div>
-            <p><strong>The Sky Computer Institute</strong></p>
-            <p>Grade: S. Computer hardware, software and basic computer concepts.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATES -->
-    <section class="section" id="certificates">
-      <div class="container reveal">
-        <p class="eyebrow">04 / Certifications</p>
-        <h2 class="section-title">Learning beyond <span class="accent">classrooms.</span></h2>
-        <p class="section-desc">
-          Courses, training and certifications completed through different
-          learning platforms and institutions.
+        <p>
+          I am building my foundation in programming, database management,
+          web development and core computer science concepts through
+          academic studies and independent learning.
         </p>
 
-        <div class="cert-grid">
-          <div class="cert"><div class="cert-icon">🛡️</div><h3>Introduction to Critical Infrastructure Protection</h3><p>OPSWAT Academy · October 2026</p></div>
-          <div class="cert"><div class="cert-icon">🌐</div><h3>Progressive Web Apps (PWA) for Beginners</h3><p>Cursa · September 2026</p></div>
-          <div class="cert"><div class="cert-icon">🏛️</div><h3>Visit Bharat Young Leaders Dialogue (VBYLD) 2027 — Online Quiz</h3><p>Ministry of Youth Affairs & Sports · September 2026</p></div>
-          <div class="cert"><div class="cert-icon">💻</div><h3>Complete HTML</h3><p>KnowledgeGate Consultants · April 2026</p></div>
-          <div class="cert"><div class="cert-icon">☕</div><h3>Complete Java</h3><p>KnowledgeGate Consultants · April 2026</p></div>
-          <div class="cert"><div class="cert-icon">📊</div><h3>Power BI for Beginners</h3><p>Simplilearn · January 2026</p></div>
-          <div class="cert"><div class="cert-icon">🗄️</div><h3>Introduction to MySQL</h3><p>Infosys Springboard · March 2026</p></div>
-          <div class="cert"><div class="cert-icon">🧠</div><h3>Critical Thinking in the AI Era</h3><p>HP · March 2026</p></div>
-          <div class="cert"><div class="cert-icon">🤖</div><h3>Unlocking AI for Everyone (Beginner)</h3><p>Microsoft · March 2026</p></div>
-          <div class="cert"><div class="cert-icon">🎓</div><h3>Advanced Diploma in Computer Application (ADCA)</h3><p>AICPE Onlus · December 2023</p></div>
-          <div class="cert"><div class="cert-icon">🖥️</div><h3>Course on Computer Concepts (CCC)</h3><p>NIELIT · August 2023</p></div>
-          <div class="cert"><div class="cert-icon">📈</div><h3>Introduction to Data Analytics</h3><p>Simplilearn · December 2025</p></div>
-          <div class="cert"><div class="cert-icon">📊</div><h3>Excel Automation using ChatGPT</h3><p>Simplilearn · December 2025</p></div>
-          <div class="cert"><div class="cert-icon">🔐</div><h3>Ethical Hacking 101: Beginners Guide</h3><p>Simplilearn · December 2025</p></div>
-          <div class="cert"><div class="cert-icon">📚</div><h3>LibreOffice Suite Base Training</h3><p>EduPyramids, Spoken Tutorial, SINE IIT Bombay · December 2025</p></div>
-          <div class="cert"><div class="cert-icon">💼</div><h3>IT for Business Success</h3><p>HP · April 2026</p></div>
-          <div class="cert"><div class="cert-icon">🔒</div><h3>Introduction to Cybersecurity Awareness</h3><p>HP · April 2026</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="container reveal">
-        <p class="eyebrow">05 / Selected Work</p>
-        <h2 class="section-title">Projects & <span class="accent">experiments.</span></h2>
-        <p class="section-desc">
-          Practical work that helps me apply what I learn and build real-world experience.
+        <p>
+          I enjoy understanding how software applications are designed,
+          developed and improved. My goal is to strengthen my technical
+          skills through practical projects, consistent learning and feedback.
         </p>
 
-        <div class="project-grid">
-          <article class="project">
-            <div class="project-number">PROJECT / 01</div>
-            <h3>VitalLoop — Blood Resource Network</h3>
-            <p>
-              A web-based project concept focused on connecting blood donors
-              and people searching for blood resources. Built as a learning
-              project using HTML and CSS.
-            </p>
-            <a class="project-link" href="https://shubhanshu-mishra85.github.io/vitalloop-blood-resource-network/#donor" target="_blank" rel="noopener">View Project ↗</a>
-          </article>
-
-          <article class="project">
-            <div class="project-number">PROJECT / 02</div>
-            <h3>Personal Developer Portfolio</h3>
-            <p>
-              A responsive personal portfolio showcasing my education,
-              technical skills, certifications, projects and career goals.
-            </p>
-            <a class="project-link" href="#home">You're viewing it ↗</a>
-          </article>
-
-          <article class="project">
-            <div class="project-number">PROJECT / 03</div>
-            <h3>Digital Services Website</h3>
-            <p>
-              A personal website concept for presenting digital services
-              such as website development, graphic design and technical support.
-            </p>
-            <span class="project-link">Personal learning project</span>
-          </article>
-
-          <article class="project">
-            <div class="project-number">PROJECT / 04</div>
-            <h3>Academic Programming Practice</h3>
-            <p>
-              Learning and practicing programming fundamentals, Java,
-              C, DBMS, SQL and data structures as part of my BCA journey.
-            </p>
-            <span class="project-link">Ongoing learning</span>
-          </article>
-        </div>
+        <p>
+          I am seeking a Software Development Internship where I can learn
+          from an experienced team, contribute with my current abilities
+          and gain practical industry experience.
+        </p>
       </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container reveal">
-        <p class="eyebrow">06 / Contact</p>
+      <!-- PREMIUM PROFILE ID CARD -->
 
-        <div class="contact-box">
-          <h3>Let's build something <span class="accent">meaningful.</span></h3>
-          <p>
-            I am open to connecting with developers, recruiters, technology
-            enthusiasts and teams offering software development internship
-            opportunities.
-          </p>
+      <div class="profile-card">
 
-          <div class="contact-links">
-            <a class="btn btn-primary" href="mailto:shivamamethiup@gmail.com">Send an Email ↗</a>
-            <a class="btn btn-outline" href="tel:+918577881494">Call Me ↗</a>
-            <a class="btn btn-outline" href="https://www.linkedin.com/in/shubhanshu-mishra-/" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a class="btn btn-outline" href="https://github.com/shubhanshu-mishra85" target="_blank" rel="noopener">GitHub ↗</a>
+        <div class="id-card-top">
+          <span>PERSONAL PROFILE</span>
+          <span class="id-card-status">● OPEN TO OPPORTUNITIES</span>
+        </div>
+
+        <div class="avatar">
+          <img
+            src="profile.jpg"
+            alt="Shubhanshu Mishra"
+            onerror="this.style.display='none';this.parentElement.textContent='SM';"
+          >
+        </div>
+
+        <div class="id-card-heading">
+          <h3>Shubhanshu Mishra</h3>
+          <p>BCA Student · Aspiring Software Developer</p>
+        </div>
+
+        <div class="id-card-divider"></div>
+
+        <div class="info-list">
+
+          <div class="info-item">
+            <span>University</span>
+            <span>MUIT, Lucknow</span>
           </div>
+
+          <div class="info-item">
+            <span>Course</span>
+            <span>Bachelor of Computer Applications</span>
+          </div>
+
+          <div class="info-item">
+            <span>Current Status</span>
+            <span>Currently Studying</span>
+          </div>
+
+          <div class="info-item">
+            <span>Graduation Year</span>
+            <span>2028</span>
+          </div>
+
+          <div class="info-item">
+            <span>Location</span>
+            <span>Lucknow, India</span>
+          </div>
+
+          <div class="info-item">
+            <span>Career Goal</span>
+            <span>Software Developer</span>
+          </div>
+
         </div>
+
+        <div class="id-card-footer">
+          <span>SHUBHANSHU MISHRA</span>
+          <span>PROFILE / 2026</span>
+        </div>
+
       </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Shubhanshu Mishra. All rights reserved.</span>
-      <span>Designed & built with <span class="accent">curiosity.</span></span>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Mobile navigation
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+<!-- SKILLS -->
 
-    menuBtn.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuBtn.textContent = isOpen ? "✕" : "☰";
-      menuBtn.setAttribute("aria-expanded", String(isOpen));
-    });
+<section class="section" id="skills">
+  <div class="container reveal">
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtn.textContent = "☰";
-        menuBtn.setAttribute("aria-expanded", "false");
-      });
-    });
+    <p class="eyebrow">02 / Technical Skills</p>
 
-    // Typewriter effect
-    const text = "BCA student, aspiring software developer and technology enthusiast. I love programming, solving problems and building meaningful digital experiences.";
-    const typedText = document.getElementById("typedText");
-    let index = 0;
+    <h2 class="section-title">
+      My technical <span class="accent">toolkit.</span>
+    </h2>
 
-    function typeWriter() {
-      if (index < text.length) {
-        typedText.textContent += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 30);
+    <p class="section-desc">
+      My current learning areas and technical foundations,
+      developed through coursework, practice and projects.
+    </p>
+
+    <div class="skills-grid">
+
+      <div class="skill"><div class="skill-icon">☕</div><h3>Java</h3><p>Programming fundamentals and OOP concepts</p></div>
+
+      <div class="skill"><div class="skill-icon">C</div><h3>C Programming</h3><p>Core programming concepts</p></div>
+
+      <div class="skill"><div class="skill-icon">⌘</div><h3>HTML5</h3><p>Web page structure</p></div>
+
+      <div class="skill"><div class="skill-icon">✦</div><h3>CSS3</h3><p>Styling and responsive layouts</p></div>
+
+      <div class="skill"><div class="skill-icon">▤</div><h3>DBMS</h3><p>Database concepts and design</p></div>
+
+      <div class="skill"><div class="skill-icon">◈</div><h3>MySQL</h3><p>Relational database fundamentals</p></div>
+
+      <div class="skill"><div class="skill-icon">⌗</div><h3>SQL</h3><p>Queries and data management</p></div>
+
+      <div class="skill"><div class="skill-icon">⌘</div><h3>Git & GitHub</h3><p>Version control and repositories</p></div>
+
+      <div class="skill"><div class="skill-icon">▦</div><h3>Microsoft Office</h3><p>Word, Excel and PowerPoint</p></div>
+
+      <div class="skill"><div class="skill-icon">◎</div><h3>Data Structures</h3><p>Learning algorithms and structures</p></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+
+<section class="section" id="education">
+  <div class="container reveal">
+
+    <p class="eyebrow">03 / Education</p>
+
+    <h2 class="section-title">
+      My academic <span class="accent">journey.</span>
+    </h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <h3>Bachelor of Computer Applications (BCA)</h3>
+        <div class="date">2025 – 2028</div>
+        <p><strong>Maharishi University of Information Technology (MUIT), Lucknow</strong></p>
+        <p>
+          Currently pursuing undergraduate studies in computer applications,
+          programming, databases and computer science.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+
+<section class="section" id="certificates">
+  <div class="container reveal">
+
+    <p class="eyebrow">04 / Continuous Learning</p>
+
+    <h2 class="section-title">
+      Courses & <span class="accent">certifications.</span>
+    </h2>
+
+    <p class="section-desc">
+      Add only certifications you have completed.
+      Replace this sample card with your verified certificate details.
+    </p>
+
+    <div class="cert-grid">
+      <article class="cert">
+        <div class="cert-icon">🎓</div>
+        <h3>Certificate Details Coming Soon</h3>
+        <p>This section is ready for your verified course and certificate information.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section class="section" id="projects">
+  <div class="container reveal">
+
+    <p class="eyebrow">05 / Selected Work</p>
+
+    <h2 class="section-title">
+      Projects I've <span class="accent">built.</span>
+    </h2>
+
+    <p class="section-desc">
+      Practical work that helps me apply what I learn
+      and improve my development skills.
+    </p>
+
+    <div class="project-grid">
+
+      <article class="project">
+        <div class="project-number">PROJECT / 01</div>
+        <h3>VitalLoop — Blood Resource Network</h3>
+        <p>
+          A browser-based project concept focused on connecting blood donors
+          and people searching for blood resources. Built as a learning
+          project using web fundamentals.
+        </p>
+        <a class="project-link"
+           href="https://shubhanshu-mishra85.github.io/vitalloop-blood-resource-network/#donor"
+           target="_blank"
+           rel="noopener noreferrer">
+          View Live Project ↗
+        </a>
+      </article>
+
+      <article class="project">
+        <div class="project-number">PROJECT / 02</div>
+        <h3>Personal Portfolio Website</h3>
+        <p>
+          A responsive portfolio website presenting my education,
+          current skills, learning journey and selected projects.
+        </p>
+        <a class="project-link" href="#home">Back to Top ↑</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+  <div class="container reveal">
+
+    <p class="eyebrow">06 / Get In Touch</p>
+
+    <div class="contact-box">
+
+      <h3>
+        Let's build something <span class="accent">meaningful.</span>
+      </h3>
+
+      <p>
+        I am interested in learning opportunities, collaboration
+        and software development internships. Feel free to connect with me.
+      </p>
+
+      <div class="contact-links">
+
+        <a class="btn btn-primary"
+           href="mailto:shivamamethiup@gmail.com">
+          Email Me ↗
+        </a>
+
+        <a class="btn btn-outline"
+           href="https://www.linkedin.com/in/shubhanshu-mishra-/"
+           target="_blank"
+           rel="noopener noreferrer">
+          LinkedIn ↗
+        </a>
+
+        <a class="btn btn-outline"
+           href="https://github.com/shubhanshu-mishra85"
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container footer-inner">
+    <span>
+      © <span id="year"></span>
+      <strong class="accent">Shubhanshu Mishra</strong>. All rights reserved.
+    </span>
+    <span>Designed & built with care · Lucknow, India</span>
+  </div>
+</footer>
+
+<script>
+/* MOBILE NAVIGATION */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+  menuBtn.textContent = isOpen ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.textContent = "☰";
+  });
+});
+
+/* TYPEWRITER EFFECT */
+
+const text =
+"BCA student, aspiring software developer and technology enthusiast. I enjoy learning programming, solving problems and building meaningful digital experiences.";
+
+const typedText = document.getElementById("typedText");
+
+let index = 0;
+
+function typeWriter() {
+  if (index < text.length) {
+    typedText.textContent += text.charAt(index++);
+    setTimeout(typeWriter, 28);
+  }
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  typeWriter();
+} else {
+  typedText.textContent = text;
+}
+
+/* SCROLL REVEAL */
+
+if ("IntersectionObserver" in window) {
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
       }
-    }
 
-    setTimeout(typeWriter, 500);
-
-    // Scroll reveal animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(".reveal").forEach(element => {
-      observer.observe(element);
     });
-  </script>
+
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+  });
+
+} else {
+  document.querySelectorAll(".reveal").forEach(el => {
+    el.classList.add("show");
+  });
+}
+
+/* CURRENT YEAR */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+</script>
 
 </body>
 </html>
