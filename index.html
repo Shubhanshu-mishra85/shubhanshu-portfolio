@@ -1,35 +1,139 @@
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#080808" />
-    <meta
-      name="description"
-      content="Shubhanshu Mishra - Aspiring Software Developer. Explore my skills, projects and journey."
-    /><title>Shubhanshu Mishra | Developer Portfolio</title>
-
-<link
-  rel="stylesheet"
-  href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
-/>
-
-<link
-  rel="stylesheet"
-  href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Regular"
-/>
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
-/>
-
-  </head>  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Shubhanshu Mishra | Aspiring Software Developer">
+<title>Shubhanshu Mishra — Developer Portfolio</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#080808;color:#fff;font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+header{height:85px;padding:0 8%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #242424}
+.logo{font-size:22px;font-weight:900;letter-spacing:-1px}
+.logo span{color:#b7ff35}
+nav{display:flex;gap:30px}
+nav a{font-size:12px;color:#aaa;transition:.3s}
+nav a:hover{color:#b7ff35}
+.menu{display:none;background:none;color:white;border:0;font-size:26px}
+.hero{min-height:calc(100vh - 85px);padding:100px 10% 80px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:450px;height:450px;border-radius:50%;background:#b7ff35;filter:blur(180px);opacity:.12;right:-100px;top:100px}
+.eyebrow{font-size:12px;letter-spacing:4px;color:#b7ff35;text-transform:uppercase;margin-bottom:25px}
+h1{font-size:clamp(55px,10vw,125px);line-height:.95;letter-spacing:-8px;font-weight:900;max-width:1000px;position:relative}
+h1 span{color:#b7ff35}
+.hero-desc{max-width:520px;color:#999;line-height:1.9;font-size:15px;margin-top:35px}
+.actions{display:flex;gap:15px;margin-top:35px;flex-wrap:wrap}
+.btn{padding:15px 25px;border:1px solid #444;border-radius:3px;font-size:12px;font-weight:700;transition:.3s}
+.btn.primary{background:#b7ff35;color:#080808;border-color:#b7ff35}
+.btn:hover{transform:translateY(-4px);border-color:#b7ff35}
+.scroll{margin-top:75px;font-size:10px;letter-spacing:3px;color:#666}
+section{padding:100px 10%;border-top:1px solid #242424}
+.section-label{font-size:11px;color:#b7ff35;letter-spacing:4px;text-transform:uppercase;margin-bottom:20px}
+h2{font-size:clamp(35px,6vw,65px);letter-spacing:-3px;margin-bottom:35px}
+.about-text{max-width:800px;color:#aaa;line-height:2;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{padding:30px;border:1px solid #292929;background:#101010;min-height:170px;transition:.3s}
+.card:hover{border-color:#b7ff35;transform:translateY(-5px)}
+.card h3{font-size:17px;margin-bottom:15px}
+.card p{font-size:13px;line-height:1.8;color:#888}
+.project{padding:30px;border:1px solid #292929;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;gap:20px;transition:.3s}
+.project:hover{border-color:#b7ff35}
+.project h3{font-size:22px;margin-bottom:10px}
+.project p{font-size:13px;color:#888;line-height:1.7}
+.project a{color:#b7ff35;font-size:12px;white-space:nowrap}
+.tag{display:inline-block;color:#b7ff35;border:1px solid #384c19;padding:7px 12px;margin:5px 5px 5px 0;font-size:11px}
+.contact{background:#b7ff35;color:#080808}
+.contact .section-label{color:#24350a}
+.contact h2{font-size:clamp(45px,8vw,90px)}
+.contact p{margin:20px 0 30px;max-width:500px;line-height:1.8}
+.contact .btn{border-color:#080808}
+footer{padding:30px 10%;display:flex;justify-content:space-between;color:#666;font-size:11px}
+@media(max-width:700px){
+header{padding:0 6%;height:70px}
+.menu{display:block}
+nav{display:none;position:absolute;top:70px;left:0;width:100%;background:#111;padding:25px;flex-direction:column;z-index:5}
+nav.active{display:flex}
+.hero{padding:100px 7% 60px;min-height:85vh}
+h1{letter-spacing:-4px}
+section{padding:75px 7%}
+.grid{grid-template-columns:1fr}
+.project{align-items:flex-start;flex-direction:column}
+footer{padding:25px 7%;gap:15px;flex-direction:column}
+}
+</style></head><body><header>
+<a class="logo" href="#">SHUBH<span>77</span></a>
+<button class="menu" onclick="document.querySelector('nav').classList.toggle('active')">☰</button>
+<nav>
+<a href="#home">HOME</a>
+<a href="#about">ABOUT</a>
+<a href="#skills">SKILLS</a>
+<a href="#projects">PROJECTS</a>
+<a href="#contact">CONTACT</a>
+</nav>
+</header><main>
+<div class="hero" id="home">
+<div class="eyebrow">● AVAILABLE FOR LEARNING & OPPORTUNITIES</div>
+<h1>BUILDING<br>THE <span>FUTURE.</span></h1>
+<p class="hero-desc">Hello, I'm Shubhanshu Mishra — a BCA student and aspiring software developer. I love technology, problem-solving and building digital experiences.</p>
+<div class="actions">
+<a href="#projects" class="btn primary">EXPLORE MY WORK ↗</a>
+<a href="#contact" class="btn">LET'S CONNECT</a>
+</div>
+<div class="scroll">SCROLL TO EXPLORE ↓</div>
+</div><section id="about">
+<div class="section-label">01 / ABOUT ME</div>
+<h2>Curious mind.<br>Builder mindset.</h2>
+<p class="about-text">I'm currently pursuing Bachelor of Computer Applications (BCA) at Maharishi University of Information Technology, Lucknow. My goal is to grow as a software developer by learning programming fundamentals, building practical projects and continuously improving my skills. I believe in learning by doing and creating technology that solves real problems.</p>
+</section><section id="skills">
+<div class="section-label">02 / MY TOOLKIT</div>
+<h2>Skills & Technologies</h2>
+<div class="grid">
+<div class="card"><h3>01 — Programming</h3><p>C, Java and programming fundamentals. Currently strengthening my problem-solving skills.</p></div>
+<div class="card"><h3>02 — Web Development</h3><p>HTML and CSS. Learning to create responsive and user-friendly web pages.</p></div>
+<div class="card"><h3>03 — Database</h3><p>DBMS, SQL and MySQL fundamentals.</p></div>
+<div class="card"><h3>04 — Tools</h3><p>Git, GitHub and MS Office.</p></div>
+<div class="card"><h3>05 — Learning</h3><p>Data Structures, algorithms and software development concepts.</p></div>
+<div class="card"><h3>06 — Mindset</h3><p>Consistency, curiosity, teamwork and continuous learning.</p></div>
+</div>
+</section><section id="projects">
+<div class="section-label">03 / SELECTED WORK</div>
+<h2>Projects I've explored.</h2><div class="project">
+<div>
+<h3>VitalLoop — Blood Resource Network</h3>
+<p>A web project focused on connecting blood donors and people in need.</p>
+<span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Web Project</span>
+</div>
+<a href="https://shubhanshu-mishra85.github.io/vitalloop-blood-resource-network/" target="_blank">VIEW PROJECT ↗</a>
+</div><div class="project">
+<div>
+<h3>Personal Digital Services</h3>
+<p>A personal digital services website concept for showcasing web development and creative services.</p>
+<span class="tag">HTML</span><span class="tag">CSS</span>
+</div>
+<a href="#contact">LEARN MORE ↗</a>
+</div>
+</section><section>
+<div class="section-label">04 / MY JOURNEY</div>
+<h2>Always in progress.</h2>
+<p class="about-text">I'm working towards becoming a skilled software developer. Every project, every concept and every line of code is a step forward. My focus is on strong fundamentals and practical experience.</p>
+</section><section class="contact" id="contact">
+<div class="section-label">05 / GET IN TOUCH</div>
+<h2>Have an idea?<br>Let's connect.</h2>
+<p>I'm open to learning opportunities, collaborations, internships and meaningful conversations about technology.</p>
+<div class="actions">
+<a class="btn" href="https://www.linkedin.com/in/shubhanshu-mishra-/" target="_blank">LINKEDIN ↗</a>
+<a class="btn" href="https://github.com/shubhanshu-mishra85" target="_blank">GITHUB ↗</a>
+<a class="btn" href="mailto:your-email@example.com">EMAIL ↗</a>
+</div>
+</section>
+</main><footer>
+<span>© 2026 SHUBHANSU MISHRA</span>
+<span>DESIGNED WITH CURIOSITY & CODE.</span>
+</footer><script>
+window.addEventListener("scroll",()=>{
+  document.querySelector("nav").classList.remove("active");
+});
+</script></body>
 </html>
